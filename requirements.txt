@@ -1,0 +1,3 @@
+flask_sqlalchemy
+flask
+pyjwt==1.7.1
