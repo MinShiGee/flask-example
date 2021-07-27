@@ -193,7 +193,7 @@ Server: Werkzeug/2.0.1 Python/3.9.6
 ```
 
 - Contents_list
-  - {Contents Name}
+  - {purchase_id, user_id, contents_name, purchase_time}
 
 
 
@@ -281,7 +281,7 @@ Server: Werkzeug/2.0.1 Python/3.9.6
 ```
 Target: http://localhost:5000
 
-POST /api/purchase HTTP/1.1
+POST /api/program HTTP/1.1
 Host: localhost
 Content-Type: application/x-www-form-urlencoded
 Content-Length:
@@ -346,7 +346,7 @@ Server: Werkzeug/2.0.1 Python/3.9.6
 ```
 
 - Contents_list
-  - {Season_id, title, member, director, season_cnt, genre}
+  - {Season_id, program_id, title, member, director, season_cnt, genre}
 
 
 
@@ -357,7 +357,7 @@ Server: Werkzeug/2.0.1 Python/3.9.6
 ```
 Target: http://localhost:5000
 
-POST /api/purchase HTTP/1.1
+POST /api/season HTTP/1.1
 Host: localhost
 Content-Type: application/x-www-form-urlencoded
 Content-Length:
@@ -427,7 +427,7 @@ Server: Werkzeug/2.0.1 Python/3.9.6
 ```
 
 - Contents_list
-  - {season_id, number, guest, date, grade}
+  - {episode_id, season_id, number, guest, date, grade}
 
 
 
@@ -438,7 +438,7 @@ Server: Werkzeug/2.0.1 Python/3.9.6
 ```
 Target: http://localhost:5000
 
-POST /api/purchase HTTP/1.1
+POST /api/episode HTTP/1.1
 Host: localhost
 Content-Type: application/x-www-form-urlencoded
 Content-Length:

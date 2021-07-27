@@ -61,7 +61,7 @@ class tb_program(db.Model):
     description:str
     
     program_id = db.Column(db.Integer, primary_key=True)
-    title = db.Column(db.String(40), unique=True)
+    title = db.Column(db.String(40))
     description = db.Column(db.String(40))
 
     def __init__(self, title:str, description:str = ''):
@@ -104,10 +104,10 @@ class tb_episode(db.Model):
 
     episode_id:int
     season_id:int
-    number:int
+    number:str
     guest:str
     date:str
-    grade:int
+    grade:str
 
     episode_id = db.Column(db.Integer, primary_key=True)
     season_id = db.Column(
@@ -115,12 +115,12 @@ class tb_episode(db.Model):
         db.ForeignKey('tb_season.season_id'), 
         nullable=False
     )
-    number = db.Column(db.Integer)
+    number = db.Column(db.String(40))
     guest = db.Column(db.String(40))
     date = db.Column(db.String(40))
-    grade = db.Column(db.Integer)
+    grade = db.Column(db.String(40))
 
-    def __init__(self, season_id:int, number:int, guest:str, date:str, grade:int):
+    def __init__(self, season_id:int, number:str, guest:str, date:str, grade:str):
         self.season_id = season_id
         self.number = number
         self.guest = guest

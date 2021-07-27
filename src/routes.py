@@ -37,14 +37,14 @@ def token_required(f):
 
 @bp.route('/oauth/login', methods= ['POST'])
 def login():
-    name = service.parse_request_key(request, 'name')
+    name = service.parse_request_key(request, 'id')
     user = service.check_login(name)
     if(user == None):
         return make_response('auth error','401')
 
     token = jwt.encode({'user':user.name, 'exp': datetime.utcnow() + timedelta(minutes=30)}, current_app.config['SECRET_KEY']).decode('UTF-8')
     token_dic[user.name] = token
-    return jsonify({'token':token})
+    return jsonify({'access_token':token})
 
 @bp.route('/oauth/logout', methods= ['GET'])
 @token_required

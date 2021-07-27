@@ -96,7 +96,7 @@ class appService():
         self.commit()
 
     def fetch_all_season(self):
-        return tb_season.query.all()
+        return db.session.query(tb_season).all()
     
     def fetch_program_season(self, program_id:int):
         if program_id == None:
@@ -131,17 +131,17 @@ class appService():
         if season_id == None:
             return []
         if not current_user.adult.startswith('adult'):
-            return db.session.query(tb_episode).filter(tb_episode.grade<19).filter_by(season_id=season_id).all()
+            return db.session.query(tb_episode).filter(tb_episode.grade.startswith('adult') == False).filter_by(season_id=season_id).all()
         return db.session.query(tb_episode).filter_by(season_id=season_id).all()
 
 ####################################################
 # Login Code
 ####################################################
 
-    def check_login(self, name:str):
+    def check_login(self, id:str):
         user = None
         try:
-            user = db.session.query(tb_user).filter_by(name=name).first()
+            user = db.session.query(tb_user).filter_by(name=id).first()
             user.last_login_time = str(datetime.now().strftime("%d/%m/%Y %H:%M:%S"))
             self.commit()
         except:
