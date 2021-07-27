@@ -13,7 +13,7 @@
 
    1. User
       1. Select
-   2.  Purchase
+   2. Purchase
       1. Select
       2. Insert
    3. Program
